@@ -1,4 +1,3 @@
-
 import { notFound } from "next/navigation";
 
 interface ArticleProps {
@@ -7,7 +6,7 @@ interface ArticleProps {
   };
 }
 
-const ArticleDetail = async ({ params }: ArticleProps) => {
+export default async function ArticleDetail({ params }: ArticleProps) {
   const { id } = params;
 
   const article = {
@@ -17,15 +16,13 @@ const ArticleDetail = async ({ params }: ArticleProps) => {
   };
 
   if (!article) {
-    notFound(); 
+    notFound();
   }
 
   return (
     <div className="p-8">
-      <h1 className="text-3xl font-bold">{article.title}</h1>
-      <p className="mt-4">{article.content}</p>
+      <h1 className="text-3xl font-bold">Article {id}</h1>
+      <p>detail untuk article <strong>{id}</strong>.</p>
     </div>
   );
-};
-
-export default ArticleDetail;
+}
