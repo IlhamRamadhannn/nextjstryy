@@ -1,15 +1,23 @@
-type ArticleProps = {
-    params: { id: string };
+interface ArticleProps {
+  params: {
+    id: string;
   };
-  
-  export default function ArticleDetail({ params }: ArticleProps) {
-    return (
-      <div className="p-8">
-        <h1 className="text-2xl font-bold">Article {params.id}</h1>
-        <p>
-          detail untuk artiwkle <strong>{params.id}</strong>.
-        </p>
-      </div>
-    );
-  }
-  
+}
+
+const ArticleDetail = ({ params }: ArticleProps) => {
+  const { id } = params; 
+  const article = {
+    id,
+    title: `Article ${id}`,
+    content: `Content for article ${id}`,
+  };
+
+  return (
+    <div className="p-8">
+      <h1 className="text-3xl font-bold">{article.title}</h1>
+      <p className="mt-4">{article.content}</p>
+    </div>
+  );
+};
+
+export default ArticleDetail;
